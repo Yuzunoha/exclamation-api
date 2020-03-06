@@ -1,14 +1,25 @@
-const url = "http://yuzuntu.com:10080/bikkuri.php";
+const url = 'http://localhost:8888/api.php';
+
+const array = [
+  'あいう',
+  'かきく',
+  'ABC',
+  '123'
+];
+
+const requestJson = JSON.stringify(array);
+
+console.log('requestJson', requestJson);
 
 fetch(url, {
-  method: "POST",
+  method: 'POST',
   headers: {
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   },
-  body: JSON.stringify({
-    "text": "あいう"
-  })
+  body: requestJson,
 })
   .then(res => res.json())
-  .then(console.log)
+  .then(responseJson => {
+    console.log('responseJson', responseJson);
+  })
   .catch(console.error);
